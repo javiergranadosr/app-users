@@ -1,0 +1,80 @@
+<app-back-botton url="/users" />
+<app-card cardTitle="Usuarios" cardDescription="Registrar usuario" />
+
+<div class="content">
+  <div class="content-image">
+    <p-card header="Foto de perfil">
+      <p-image [src]="url" alt="Foto de perfil"></p-image>
+      <p>
+        Solo se permite los formatos JPG o PNG y un tamaño máximo permitido de
+        5mb.
+      </p>
+      <input type="file" (change)="onPreviewImage($event)" />
+    </p-card>
+  </div>
+  <div class="content-form">
+    <p-card header="Información de contacto">
+      <form>
+        <div>
+          <label for="name">Nombre</label>
+          <input pInputText id="name" aria-describedby="name-help" />
+          <small id="name-help">El nombre es un campo obligatorio.</small>
+        </div>
+        <div>
+          <label for="lastname">Apellidos</label>
+          <input pInputText id="lastname" aria-describedby="lastname-help" />
+          <small id="lastname-help">Los apellidos son obligatorios.</small>
+        </div>
+        <div>
+          <label for="username">Nombre de usuario</label>
+          <input pInputText id="username" aria-describedby="username-help" />
+          <small id="name-help"
+            >El nombre de usuario es un campo obligatorio.</small
+          >
+        </div>
+        <div>
+          <label for="email">Correo electrónico</label>
+          <input pInputText id="email" aria-describedby="email-help" />
+          <small id="email-help"
+            >El correo electrónico es un campo obligatorio.</small
+          >
+        </div>
+        <div>
+          <label for="">Código de país </label>
+          <p-dropdown
+            [options]="cities"
+            optionLabel="name"
+            placeholder="Seleccione un código"
+          ></p-dropdown>
+          <small>El código de país es un campo obligatorio.</small>
+        </div>
+        <div>
+          <label for="telephone">Teléfono</label>
+          <p-inputMask
+            mask="(999) 999 9999"
+            placeholder="(000) 000 0000"
+          ></p-inputMask>
+          <small id="telephone">El teléfono es un campo obligatorio.</small>
+        </div>
+        <div>
+          <label for="telephone">Permisos de usuario</label>
+          <p-multiSelect
+            [options]="cities"
+            placeholder="Seleccione permisos"
+            optionLabel="name"
+            display="chip"
+          ></p-multiSelect>
+          <small>Seleccione al menos un permiso de usuario.</small>
+        </div>
+        <div>
+          <button
+            pButton
+            pRipple
+            label="Guardar usuario"
+            class="p-button-success"
+          ></button>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>

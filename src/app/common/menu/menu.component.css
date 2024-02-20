@@ -1,0 +1,6 @@
+/*DESDE EL COMPONENTE PADRE, PERMITIMOS AGREGAR ESTILO AL MENU, CUANDO ESTA ACTIVA LA RUTA*/
+
+::ng-deep .p-menuitem-link-active {
+  background-color: #ecf0f1 !important;
+  font-weight: bold !important;
+}

@@ -1,0 +1,83 @@
+<div class="card">
+  <div class="options">
+    <p-button
+      label="Nuevo usuario"
+      [raised]="true"
+      severity="success"
+      size="small"
+      routerLink="/users/create"
+    ></p-button>
+
+    <div>
+      <label>Filtrar por permiso</label>
+      <p-dropdown
+        [options]="roles"
+        optionLabel="description"
+        placeholder="Seleccione un permiso"
+      ></p-dropdown>
+    </div>
+  </div>
+
+  <p-table
+    [value]="users"
+    [paginator]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    styleClass="p-datatable-striped"
+    [tableStyle]="{ 'min-width': '50rem', 'margin-top': '10px !important' }"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    (onPage)="pageChange($event)"
+    [rowsPerPageOptions]="[10, 25, 50]"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Foto de perfil</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Usuario</th>
+        <th>Correo electrónico</th>
+        <th>Teléfono</th>
+        <th>Permisos</th>
+        <th>Fecha de alta</th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-user>
+      <tr>
+        <td>
+          <p-avatar
+            [image]="user.image"
+            styleClass="mr-2"
+            size="large"
+            shape="circle"
+          ></p-avatar>
+        </td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.lastname }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.telephone }}</td>
+        <td>
+          @for (role of user.roles; track role.id) {
+          <p-badge [value]="role.name + ''"></p-badge>
+          }
+        </td>
+        <td>{{ user.createdAt }}</td>
+        <td>
+          <p-button
+            icon="pi pi-cog"
+            [rounded]="true"
+            [text]="true"
+            severity="success"
+          ></p-button>
+          <p-button
+            icon="pi pi-times"
+            [rounded]="true"
+            [text]="true"
+            severity="danger"
+          ></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

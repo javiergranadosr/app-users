@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+* {
+  margin: 0px !important;
+}
+
+.container {
+  width: 100%;
+  padding: 30px;
+}
+
+/*ESTILOS MENU*/
+
+p-menubarsub {
+  width: 100% !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  flex-direction: row !important;
+  justify-content: flex-end !important;
+}
+
+/*ESTILOS IMAGEN*/
+img {
+  width: 100%;
+  max-width: 300px;
+  max-height:300px;
+  display: block !important;
+  margin: auto !important;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+/*ESTILOS INPUTS*/
+
+.p-dropdown, .p-inputmask, .p-inputtext, .p-multiselect  {
+  width: 100% !important;
+}
+
+
+label, small {
+  font-weight: bold !important;
+}
+
+small {
+  color: red !important;
+}
+
+
+

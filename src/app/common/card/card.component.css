@@ -1,0 +1,16 @@
+.titles {
+  margin: 10px !important;
+}
+
+h1,
+h2 {
+  text-align: center;
+  color: #000;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 400;
+}

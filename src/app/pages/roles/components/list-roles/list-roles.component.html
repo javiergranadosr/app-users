@@ -1,0 +1,61 @@
+<div class="card">
+  <p-button
+    label="Nuevo permiso"
+    [raised]="true"
+    severity="success"
+    size="small"
+    routerLink="/roles/create"
+  ></p-button>
+  @if (loading) {
+  <p-progressBar
+    mode="indeterminate"
+    [style]="{ height: '6px' }"
+  ></p-progressBar>
+  }@else {
+  <p-table
+    [value]="data"
+    [paginator]="true"
+    [rows]="5"
+    [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem', 'margin-top': '10px !important' }"
+    currentPageReportTemplate="{first} - {last} de un total de {totalRecords} permisos"
+    [rowsPerPageOptions]="[5, 10, 15, 20]"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Fecha de creación</th>
+        <th>Fecha de actualización</th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data>
+      <tr>
+        <td><p-badge [value]="data.name"></p-badge></td>
+        <td>{{ data.description }}</td>
+        <td>{{ data.createdAt | date : "dd/MM/yyyy" }}</td>
+        <td>{{ data.updatedAt | date : "dd/MM/yyyy" }}</td>
+        <td>
+          <p-button
+            icon="pi pi-pencil"
+            [rounded]="true"
+            [text]="true"
+            severity="success"
+            [routerLink]="['/roles/edit', data.id]"
+          ></p-button>
+          <p-button
+            icon="pi pi-trash"
+            [rounded]="true"
+            [text]="true"
+            severity="danger"
+            (onClick)="delete(data.name, data.id)"
+          ></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  }
+</div>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>

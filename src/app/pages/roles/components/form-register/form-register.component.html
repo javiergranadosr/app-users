@@ -1,0 +1,77 @@
+<app-back-botton url="/roles" />
+<app-card cardTitle="Permisos" [cardDescription]="title" />
+
+<div class="content">
+  <div class="content-form">
+    <p-card header="Información del permiso">
+      <form [formGroup]="formRole" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="name">Nombre<span class="text-danger">*</span></label>
+          <input
+            pInputText
+            id="name"
+            aria-describedby="name-help"
+            formControlName="name"
+          />
+          @if (formRole.get("name")?.getError("required") &&
+          formRole.get("name")?.touched) {
+          <small id="name-help">El nombre es un campo obligatorio.</small>
+          } @if (formRole.get("name")?.getError("minlength") ||
+          formRole.get("name")?.getError("maxlength")) {
+          <small id="name-help"
+            >El nombre tiene permitido un máximo de 4 a 100 caracteres.</small
+          >
+          } @if (formRole.get("name")?.getError("pattern")) {
+          <small id="name-help"
+            >El nombre tiene un formato invalido, solo se permiten letras.
+          </small>
+          }
+        </div>
+        <div>
+          <label for="description"
+            >Descripción<span class="text-danger">*</span></label
+          >
+          <textarea
+            rows="5"
+            cols="30"
+            pInputTextarea
+            id="description"
+            formControlName="description"
+          ></textarea>
+          @if (formRole.get("name")?.getError("required") &&
+          formRole.get("description")?.touched) {
+          <small id="description-help"
+            >La descripción es un campo obligatorio.</small
+          >
+          } @if (formRole.get("description")?.getError("minlength") ||
+          formRole.get("description")?.getError("maxlength")) {
+          <small id="name-help"
+            >La descripción tiene permitido un máximo de 10 a 255
+            caracteres.</small
+          >
+          } @if (formRole.get("description")?.getError("pattern")) {
+          <small id="name-help"
+            >La descripción tiene un formato invalido, solo se permiten letras.
+          </small>
+          }
+        </div>
+        <div>
+          @if (!loading) {
+          <button
+            pButton
+            pRipple
+            [label]="titleButton"
+            class="p-button-success"
+          ></button>
+          } @if (loading) {
+          <p-progressBar
+            mode="indeterminate"
+            [style]="{ height: '6px' }"
+          ></p-progressBar>
+          }
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>
+<p-toast></p-toast>
